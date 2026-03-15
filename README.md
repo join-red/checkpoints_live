@@ -179,8 +179,13 @@ may be a taken checkpoint or a disconnected player.  If no such event occurs,
 nothing at all is dispatched at the next global interval tick.
 
 Some events -- such as connections and disconnections -- are configured to
-trigger a dispatch regardless of the global interval so that stale clickable
-rows are not displayed.  This is a "forced" dispatch.
+trigger an immediate attempted[^att] dispatch regardless of the global interval
+so that stale clickable rows are not displayed.  This is a "forced" dispatch.
+
+[^att]: That is, the plug-in will still check that duplicate data is not being
+        broadcast: see the description of the *Hash hits* statistic under the
+        [stats](#stats) section and commentary in `plugin.cplive_v3.php`,
+        *passim*.
 
 #### rows [\<int\>]
 ```
