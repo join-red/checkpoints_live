@@ -46,7 +46,7 @@
  **/
 
 class CPLive {
-    public const VERSION = '3.4.2';
+    public const VERSION = '3.4.3';
 
     // Configuration
     public $MAX_DISPLAY_ROWS = 24;            // How many rows (drivers/spectators) may be shown
@@ -96,7 +96,7 @@ class CPLive {
     // chat-based Y/N votes. Therefore this feature is off by default; but
     // you have the option to choose your personal lesser evil.
     public const TOGGLE_KEY = 0; // 0 = None | 1 = F5 | 2 = F6 | 3 = F7
-    public const KEYS = ['No Key', 'F5', 'F6', 'F7'];
+    public const KEYS = ['', 'F5', 'F6', 'F7'];
 
     private const CFG_TOUCH_NONE    = 0;
     private const CFG_TOUCH_SLICE   = 1;
@@ -549,14 +549,13 @@ class CPLive {
 
 
     public function showHelpManialink($login) {
-        $header = '{#black}CP Live v' . self::VERSION . '$g commands:';
+        $header = '{#black}CP Live v' . self::VERSION . '$g overview:';
 
         $help   = [];
-        $help[] = [];
 
         $help[] = ['$sUser commands:', '', ''];
         $help[] = ['color', '', 'Toggle between colored and plain nicknames'];
-        $help[] = ['toggle', '{#black}(' . self::KEYS[self::TOGGLE_KEY] . ')', 'Collapse or expand the Checkpoints Live widget'];
+        $help[] = ['toggle', '{#black}' . self::KEYS[self::TOGGLE_KEY], 'Collapse or expand the Checkpoints Live widget'];
         $help[] = [];
 
         $help[] = ['$sMasterAdmin commands:', '', ''];
@@ -572,6 +571,10 @@ class CPLive {
 
         $help[] = ['$sNerd commands:', '', ''];
         $help[] = ['stats', '', 'View performance stats (per widget lifetime)'];
+        $help[] = [];
+        $help[] = ['$sCredits:', '', ''];
+        $help[] = ['{#black}poैtato & Falleos', '', '$0bf$l[http://github.com/join-red/checkpoints_live]Project repository on GitHub$l'];
+        $help[] = [];
 
         display_manialink($login, $header, ['Icons64x64_1', 'TrackInfo', -0.01], $help, [1.4, 0.38, 0.17, 0.85], 'OK');
     }
